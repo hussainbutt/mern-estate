@@ -12,7 +12,7 @@ mongoose.connect(process.env.MONGO).then(() => {
 
 const app = express();
 app.get('/', (req, res) => {
-    res.send('GET request to the homepage')
+    res.
 })
 
 app.listen(3000, () => {
