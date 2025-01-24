@@ -26,7 +26,7 @@ app.listen(3000, () => {
 
 
 app.use("/api/user", userRoute);
-app.use("/api/auth", signUp);
+app.use("/api/auth", authRoute);
 
 //Lets make a middleware for error handling
 app.use((err, req, res, next) => {
