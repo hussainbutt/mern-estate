@@ -2,8 +2,7 @@
 import UserExample from "../models/userData.model.js";
 import bcryptjs from "bcryptjs";
 import { errorHandler } from "../utils/error.js";
-import jwt from "jsonwebtoken"
-
+import jwt from "jsonwebtoken";
 
 export const signup = async (req, res, next) => {
     const { userName, email, password } = req.body;
@@ -23,7 +22,7 @@ export const signup = async (req, res, next) => {
 export const signin = async (req, res, next) => {
     const { email, password } = req.body;
     try {
-        const validUser = await User.findOne({ email });
+        const validUser = await UserExample.findOne({ email });
         if (!validUser) {
             return next(errorHandler(404, "User not found!"))
         }

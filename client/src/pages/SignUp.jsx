@@ -53,6 +53,7 @@ export default function SignUp() {
           id="userName"
           className="border rounded-lg p-3"
           onChange={handleChange}
+          required
         ></input>
         <input
           type="email"
@@ -60,6 +61,7 @@ export default function SignUp() {
           id="email"
           className="border rounded-lg p-3 mt-4"
           onChange={handleChange}
+          required
         ></input>
         <input
           type="password"
@@ -67,6 +69,7 @@ export default function SignUp() {
           id="password"
           className="border rounded-lg p-3 mt-4"
           onChange={handleChange}
+          required
         ></input>
         <button
           className="bg-slate-700 text-white uppercase my-7 p-2 rounded-lg hover:opacity-95 disabled:opacity-60"
@@ -78,7 +81,9 @@ export default function SignUp() {
       </form>
       <div className="flex gap-2">
         <p>Have an account?</p>
-        <Link className="text-blue-700 hover:text-blue-900">Sign In</Link>
+        <Link className="text-blue-700 hover:text-blue-900" to="/sign-in">
+          Sign In
+        </Link>
       </div>
       {error && <p className="text-red-700">{error}</p>}
     </div>
