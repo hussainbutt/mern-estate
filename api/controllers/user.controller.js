@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs';
 import UserExample from '../models/userData.model.js';
 import { errorHandler } from '../utils/error.js';
+import { signOutStart } from '../../client/src/redux/user/userSlice.js';
 export const test = (req, res) => {
     res.json({ message: 'API is up!' });
 }
@@ -33,5 +34,14 @@ export const deleteUser = async (req, res, next) => {
         res.status(200).json({ message: "User deleted successfully." });
     } catch (err) {
         next(err);
+    }
+}
+
+export const signOut = () => {
+    try {
+        res.clearCookie('access_token');
+        return res.status(200).json({ message: "Logged out successfully." });
+    } catch (error) {
+        next(error);
     }
 }
