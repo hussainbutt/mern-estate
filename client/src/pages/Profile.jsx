@@ -45,36 +45,26 @@ export default function Profile() {
     setFileUploadError(false);
 
     try {
-      const xhr = new XMLHttpRequest();
-      xhr.open("POST", CLOUDINARY_URL, true);
+      const response = await fetch(CLOUDINARY_URL, {
+        method: "POST",
+        body: formData,
+      });
 
-      xhr.upload.onprogress = (event) => {
-        if (event.lengthComputable) {
-          const progress = Math.round((event.loaded / event.total) * 100);
-          setFilePerc(progress);
-        }
-      };
+      if (!response.ok) {
+        throw new Error("File upload failed");
+      }
 
-      xhr.onload = () => {
-        if (xhr.status === 200) {
-          const response = JSON.parse(xhr.responseText);
-          console.log(response.secure_url);
-          setFormData((prev) => ({ ...prev, avatar: response.secure_url }));
-          setFilePerc(100);
-        } else {
-          setFileUploadError(true);
-        }
-      };
+      const data = await response.json();
+      console.log(data.secure_url);
 
-      xhr.onerror = () => {
-        setFileUploadError(true);
-      };
-
-      xhr.send(formData);
+      setFormData((prev) => ({ ...prev, avatar: data.secure_url }));
+      setFilePerc(100);
     } catch (error) {
+      console.error(error);
       setFileUploadError(true);
     }
   };
+
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
     console.log(formData);
