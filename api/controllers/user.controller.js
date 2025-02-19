@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs';
 import UserExample from '../models/userData.model.js';
 import { errorHandler } from '../utils/error.js';
 import { signOutStart } from '../../client/src/redux/user/userSlice.js';
+import Listing from '../models/listing.model.js';
 export const test = (req, res) => {
     res.json({ message: 'API is up!' });
 }
@@ -44,4 +45,16 @@ export const signOut = () => {
     } catch (error) {
         next(error);
     }
-}
+    export const getUserListings = async (req, res, next) => {
+        if (req.user.id === req.params.id) {
+            try {
+                const listings = await Listing.find({ userRef: req.params.id });
+
+                res.json(listings).status(200);
+            } catch (error) {
+                next(error);
+            }
+        } else {
+            return next(errorHandler(401, "You can only view your own listings!");
+        }
+    }
