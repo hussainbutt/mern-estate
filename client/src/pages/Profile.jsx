@@ -145,7 +145,6 @@ export default function Profile() {
       const res = await fetch(`/api/listing/delete/${listingId}`, {
         method: "DELETE",
       });
-      console.log(res);
 
       const data = await res.json();
       if (data.success == false) {
@@ -276,7 +275,9 @@ export default function Profile() {
                   >
                     Delete
                   </button>
-                  <button className="text-green-700 uppercase">Edit</button>
+                  <Link to={`/update-listing/${listing._id}`}>
+                    <button className="text-green-700 uppercase">Edit</button>
+                  </Link>
                 </div>
               </div>
             );
