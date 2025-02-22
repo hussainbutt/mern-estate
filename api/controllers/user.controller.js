@@ -45,16 +45,18 @@ export const signOut = () => {
     } catch (error) {
         next(error);
     }
-    export const getUserListings = async (req, res, next) => {
-        if (req.user.id === req.params.id) {
-            try {
-                const listings = await Listing.find({ userRef: req.params.id });
 
-                res.json(listings).status(200);
-            } catch (error) {
-                next(error);
-            }
-        } else {
-            return next(errorHandler(401, "You can only view your own listings!");
+}
+export const getUserListings = async (req, res, next) => {
+    if (req.user.id === req.params.id) {
+        try {
+            const listings = await Listing.find({ userRef: req.params.id });
+
+            res.json(listings).status(200);
+        } catch (error) {
+            next(error);
         }
+    } else {
+        return next(errorHandler(401, "You can only view your own listings!"));
     }
+}
