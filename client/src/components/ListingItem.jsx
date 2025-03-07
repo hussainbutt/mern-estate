@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { MdLocationOn } from "react-icons/md";
-export default function ListingItem(listing) {
+export default function ListingItem({ listing }) {
   return (
     <div
       className="bg-white shadow-md hover:shadow-lg
@@ -8,10 +8,7 @@ export default function ListingItem(listing) {
     >
       <Link to={`/listing/${listing._id}`}>
         <img
-          src={
-            listing.imageUrls[0] ||
-            "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fhouse-illustration&psig=AOvVaw1gDCVgD1JhQR6Aj0E2dvv7&ust=1741420224198000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjU9Zu-94sDFQAAAAAdAAAAABAE"
-          }
+          src={listing.imageUrls[0]}
           alt="listing cover"
           className="h-[320px] sm:h-[220px] w-full object-cover hover:scale-105 transition-scale duration-300"
         />
