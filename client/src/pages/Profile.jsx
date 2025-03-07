@@ -112,8 +112,8 @@ export default function Profile() {
 
   const handleSignOut = async () => {
     try {
-      dispatch(signOutStart);
-      const res = await fetch(`/api/user/signOut`);
+      dispatch(signOutStart());
+      const res = await fetch(`/api/user/signout`);
       const data = await res.json();
       if (data.success === false) {
         dispatch(signOutFailure());
@@ -121,7 +121,9 @@ export default function Profile() {
       }
       dispatch(signOutSuccess());
     } catch (error) {
-      dispatch(signOutFailure());
+      console.log("signout failed");
+
+      dispatch(signOutFailure(error));
     }
   };
   const handleShowListings = async () => {
