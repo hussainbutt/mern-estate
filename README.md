@@ -2,9 +2,8 @@ For demo: https://realtorsportal.onrender.com
 
 # 🏡 MERN Estate — Real Estate Listing Platform
 
-Welcome to **MERN Estate**, a cutting-edge, full-stack real estate platform engineered using the **MERN (MongoDB, Express, React, Node.js)** stack. This robust application empowers users to seamlessly authenticate, list, search, and manage real estate listings with modern UI, secure backend integration, and dynamic routing.
+Welcome to **MERN Estate**, A full-stack real estate platform engineered using the **MERN (MongoDB, Express, React, Node.js)** stack. This robust application empowers users to seamlessly authenticate, list, search, and manage real estate listings with modern UI, secure backend integration, and dynamic routing.
 
-> ✨ Designed for scalability. Optimized for performance. Tailored for the digital era.
 
 ---
 
